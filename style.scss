@@ -1,0 +1,53 @@
+$paragraph: #fa6803;
+$color: #fceede;
+$font-family: 'Eagle Lake', cursive;
+$margin: 20px;
+$padding: 20px;
+
+.presentation{
+  padding: $padding;
+  margin: $margin;
+  background-color: $paragraph;
+  line-height: 40px;
+  font-family: $font-family;
+}
+
+main {
+  margin: $margin;
+  padding: $padding;
+  background-color: $color;
+}
+
+nav  li{
+  display: inline;
+  margin: $margin;
+  padding: $padding;
+}
+
+ul{
+  @extend .presentation;
+  list-style: none;
+  a{
+    text-decoration: none;
+    color: $color;
+    font-size: 20px;
+  }
+}
+
+.ring {
+  font-family: $font-family;
+  display: block;
+  justify-content: center;
+}
+
+footer {
+  @extend .presentation;
+  display: flex;
+  justify-content: space-around;
+}
+
+@mixin ring($property) {
+  -webkit-ring: $property;
+  -ms-ring: $property;
+  ring: $property;
+}
