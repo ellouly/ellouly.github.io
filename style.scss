@@ -1,3 +1,6 @@
+/* -------------- */
+/* DEFAULT VALUES */
+
 $paragraph: #fa6803;
 $color: #fceede;
 $font-family: 'Eagle Lake', cursive;
@@ -12,16 +15,23 @@ $padding: 20px;
   font-family: $font-family;
 }
 
-main {
-  margin: $margin;
-  padding: $padding;
-  background-color: $color;
+@mixin ring ($size, $color) {
+  height: $size;
+  width: $size;
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  top: 30px;
+  border: $size/20 solid $color;
+  border-radius: 50%;
+  box-shadow: inset $size/30 $size/30 $size/10 2px darken($color, 30%), $size/30 $size/30 10px 2px darken($color, 30%);
 }
+
+/* -------------- */
+/* HEADER */
 
 nav  li{
   display: inline;
-  margin: $margin;
-  padding: $padding;
 }
 
 ul{
@@ -31,23 +41,50 @@ ul{
     text-decoration: none;
     color: $color;
     font-size: 20px;
+    margin: $margin;
   }
 }
 
-.ring {
+/* -------------- */
+/* MAIN */
+
+main {
+  margin: $margin;
+  padding: $padding;
+  background-color: $color;
   font-family: $font-family;
+  height: 600px;
+  font-size: 40px;
   display: block;
-  justify-content: center;
+  text-align: center;
 }
+
+.ring_orange {
+  @include ring(50px, orange);
+}
+
+.ring_yellow {
+  @include ring(100px, yellow);
+}
+
+#loop {
+  position: relative;
+  transform: translateY(-80px);
+}
+
+@for $i from 1 through 6 {
+  .ring_grey:nth-child(#{$i}) {
+    @include ring(10px + $i * 20px, grey);
+    left: 70px + $i * -70px;
+    transform: translateY(50%);
+  }
+}
+
+/* -------------- */
+/* FOOTER */
 
 footer {
   @extend .presentation;
   display: flex;
   justify-content: space-around;
-}
-
-@mixin ring($property) {
-  -webkit-ring: $property;
-  -ms-ring: $property;
-  ring: $property;
 }
